@@ -1,11 +1,13 @@
 class Yemek {
-  final String yemekId;
+  final String? yemekId;
+  final String? sepetYemekId;
   final String yemekAdi;
   final String yemekResimAdi;
   final double yemekFiyat;
 
   Yemek({
-    required this.yemekId,
+    this.yemekId,
+    this.sepetYemekId,
     required this.yemekAdi,
     required this.yemekResimAdi,
     required this.yemekFiyat,
@@ -14,6 +16,7 @@ class Yemek {
   factory Yemek.fromJson(Map<String, dynamic> json) {
     return Yemek(
       yemekId: json['yemek_id'],
+      sepetYemekId: json['sepet_yemek_id'],
       yemekAdi: json['yemek_adi'],
       yemekResimAdi: json['yemek_resim_adi'],
       yemekFiyat: double.parse(json['yemek_fiyat']),

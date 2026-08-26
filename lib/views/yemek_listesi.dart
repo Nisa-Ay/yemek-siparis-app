@@ -1,3 +1,4 @@
+import '../views/yemek_detay.dart';  
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../cubit/yemek_cubit.dart';
@@ -9,10 +10,18 @@ class YemekListesi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => YemekCubit(YemekRepository())..yemekleriGetir(),
-      child: BlocBuilder<YemekCubit, YemekState>(
-        builder: (context, state) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Anasayfa'),
+          centerTitle: true,
+          backgroundColor: const Color(0xFF800020),
+          foregroundColor: Colors.white,
+          elevation: 0,
+        ),
+        body: BlocProvider(
+          create: (context) => YemekCubit(YemekRepository())..yemekleriGetir(),
+          child: BlocBuilder<YemekCubit, YemekState>(
+            builder: (context, state) {
           if (state is YemekYukleniyor) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is YemekHata) {
@@ -29,24 +38,31 @@ class YemekListesi extends StatelessWidget {
               itemCount: state.yemekler.length,
               itemBuilder: (context, index) {
                 final yemek = state.yemekler[index];
-                return Card(
-                  child: Column(
-                    children: [
-                      Expanded(
-                        child: Image.network(
-                          'http://kasimadalan.pe.hu/yemekler/resimler/${yemek.yemekResimAdi}',
-                          fit: BoxFit.cover,
+                return GestureDetector(onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => YemekDetay(yemek: yemek)),
+                  );
+                },
+                  child: Card(
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: Image.network(
+                            'http://kasimadalan.pe.hu/yemekler/resimler/${yemek.yemekResimAdi}',
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: Text(
-                          yemek.yemekAdi,
-                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: Text(
+                            yemek.yemekAdi,
+                            style: const TextStyle(fontWeight: FontWeight.bold),
+                          ),
                         ),
-                      ),
-                      Text('${yemek.yemekFiyat} TL'),
-                    ],
+                        Text('${yemek.yemekFiyat} TL'),
+                      ],
+                    ),
                   ),
                 );
               },
@@ -55,6 +71,6 @@ class YemekListesi extends StatelessWidget {
           return const SizedBox();
         },
       ),
-    );
+    ));
   }
 }

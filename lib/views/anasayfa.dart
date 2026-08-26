@@ -28,7 +28,7 @@ class _AnasayfaState extends State<Anasayfa> {
         currentIndex: _secilenIndex,
         onTap: (index) => setState(() => _secilenIndex = index),
         backgroundColor: Colors.white,
-        selectedItemColor: Colors.deepPurple,
+        selectedItemColor:  Color(0xFF800020),
         unselectedItemColor: Colors.grey,
         type: BottomNavigationBarType.fixed,
         items: const [
