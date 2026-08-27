@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../cubit/sepet_cubit.dart';
 import '../cubit/sepet_state.dart';
 import '../repositories/yemek_repository.dart';
@@ -12,7 +13,10 @@ class Sepetim extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFF5F5F5),
       appBar: AppBar(
-        title: const Text('Sepetim'),
+        title:  Text(
+            'Sepetim',
+            style: GoogleFonts.caveat(fontWeight: FontWeight.bold, fontSize: 28),
+        ),
         centerTitle: true,
         backgroundColor:  const Color(0xFF800020),
         foregroundColor: Colors.white,

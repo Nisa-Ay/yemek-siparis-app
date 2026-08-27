@@ -1,17 +1,32 @@
-# bitirme_projesi
+# Yemek Sipariş Uygulaması
 
-A new Flutter project.
+Flutter ile geliştirilmiş, gerçek zamanlı bir REST API'ye bağlanan yemek sipariş uygulaması. Yemekleri listeleme, detaylarını görüntüleme, sepete ekleme ve favorilere alma gibi temel bir e-ticaret akışını uçtan uca uygular.
 
-## Getting Started
+## Özellikler
 
-This project is a starting point for a Flutter application.
+- Yemek listesi (arama özellikli)
+- Yemek detay sayfası (adet seçimi ile sepete ekleme)
+- Sepet yönetimi (listeleme, silme, toplam tutar hesaplama)
+- Favoriler (kalp ikonu ile ekleme/çıkarma)
+- Hesabım ekranı
 
-A few resources to get you started if this is your first Flutter project:
+## Kullanılan Teknolojiler
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+- Flutter & Dart
+- BLoC / Cubit (state management)
+- Dio (HTTP istekleri)
+- Google Fonts
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Mimari
+
+Proje, Entity - Repository - Cubit katmanlarından oluşan BLoC mimarisine göre yapılandırılmıştır:
+
+- `lib/entities` — Veri modelleri
+- `lib/repositories` — API istekleri
+- `lib/cubit` — State yönetimi
+- `lib/views` — Ekranlar
+
+## API
+
+Bu proje, [kasimadalan.pe.hu](http://kasimadalan.pe.hu/yemekler/) üzerinde barındırılan halka açık bir test API'sini kullanmaktadır.
+
